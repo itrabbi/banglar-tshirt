@@ -8,8 +8,13 @@ const Home = () => {
     const [cart, setCart] = useState([]);
 
     const handleAddToCart = tshirt => {
-        const newCart = [...cart, tshirt ];
+        const newCart = [...cart, tshirt];
         setCart(newCart);
+    }
+
+    const handleRemoveToCart = id => {
+        const remaning = cart.filter(ts => ts._id !== id);
+        setCart(remaning);
     }
     return (
         <div className='home-conatiner'>
@@ -24,7 +29,8 @@ const Home = () => {
             </div>
             <div className="cart-container">
                 <Cart
-                cart={cart}
+                    cart={cart}
+                    handleRemoveToCart={handleRemoveToCart}
                 ></Cart>
             </div>
         </div>
